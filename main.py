@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import os
 from constructs import Construct
 from cdktf import App, TerraformStack, TerraformOutput
 from imports.aws.provider import AwsProvider
@@ -8,11 +9,10 @@ class MyStack(TerraformStack):
     def __init__(self, scope: Construct, ns: str):
         super().__init__(scope, ns)
 
+        region = os.getenv("AWS_DEFAULT_REGION")
+
         # Initialize the AWS provider
-        AwsProvider(self, "AWS", 
-        #access_key = "my-access-key",
-        #secret_key = "my-secret-key",
-        region="eu-west-1")
+        AwsProvider(self, "AWS", region=region)
 
         # Define an EC2 instance
         instance = Instance(self, "compute",
