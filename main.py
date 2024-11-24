@@ -18,8 +18,7 @@ class MyStack(TerraformStack):
         instance = Instance(self, "compute",
                             ami="ami-0fcc0bef51bad3cb2",
                             instance_type="t2.micro",
-                            tags={"Name": "CDKTF-Demo"},
-                            )
+                            tags={"Name": "CDKTF-Demo"})
 
 
         # Output the public IP of the instance
