@@ -9,3 +9,13 @@ Details
 - Lab report supporting project
 - Python
 - CDKTF
+
+# Deployment for Stacks
+
+cdktf deploy "network" "instance" --auto-approve
+
+# Destroy Stacks
+
+cdktf deploy "instance" "network" --auto-approve
+
+
