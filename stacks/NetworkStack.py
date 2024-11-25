@@ -1,8 +1,7 @@
 from cdktf import TerraformStack
 from constructs import Construct
 from cdktf import App, TerraformStack, TerraformOutput
-from imports.aws.provider import AwsProvider
-from imports.aws import Vpc,Subnet,InternetGateway, InternetGatewayAttachment, RouteTable, RouteTableAssociation
+from imports.aws import AwsProvider, Vpc, Subnet, InternetGateway, InternetGatewayAttachment, RouteTable, RouteTableAssociation
 from variables import NetworkConfig
 
 class NetworkStack(TerraformStack):
@@ -11,7 +10,7 @@ class NetworkStack(TerraformStack):
 
         # AWS provider, regions coming from variables.py
         AwsProvider(self, "AWS",
-            region= config.availability_zone        
+            region= config.availability_zone     
         )
 
         # VPC
@@ -83,7 +82,3 @@ class NetworkStack(TerraformStack):
             subnet_id=publicSubnet.id,
             route_table_id=publicRouteTable.id
         )
-
-
-
-
