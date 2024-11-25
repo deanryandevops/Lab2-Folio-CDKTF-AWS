@@ -50,24 +50,3 @@ class InstanceStack(TerraformStack):
                 "Environment": config.environment
             }
         )
-
-
-
-             # Security Group for public instances
-    Properties:
-      GroupName: "public-security-group"
-      GroupDescription: "Allow traffic inbound for ssh on public subnet and https and allow all outbound"
-      VpcId: !Ref FridayHITTVPC
-      SecurityGroupIngress: # this is inbounds configuration
-        - IpProtocol: tcp # SSH 
-          FromPort: 22
-          ToPort: 22
-          CidrIp: 10.0.1.0/24
-        - IpProtocol: tcp # HTTPS
-          FromPort: 443
-          ToPort: 443
-          CidrIp: 0.0.0.0/0
-      Tags:
-        - Key: Name
-          Value: public-security-group
-
